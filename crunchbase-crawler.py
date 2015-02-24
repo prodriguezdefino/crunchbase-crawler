@@ -13,7 +13,7 @@ import traceback
 datetime_format = '%Y-%m-%d %H:%M:%S'
 user_key = '8281900a2863fe0ff65072d83d93e755'
 order = 'ASC'
-starting_page = 9
+starting_page = 12
 
 def format_time_in_millis(millis):
     return datetime.datetime.fromtimestamp(millis).strftime(datetime_format);
@@ -83,7 +83,7 @@ def generate_tuple(obase):
         if 'secondary_role_for_profit' in exploded['properties'].keys() and not exploded['properties']['secondary_role_for_profit'] is None:
             secondary_role_for_profit = exploded['properties']['secondary_role_for_profit']
         if 'short_description' in exploded['properties'].keys() and not exploded['properties']['short_description'] is None:
-            short_description = exploded['properties']['short_description'].encode('utf8').replace(',','|||')
+            short_description = exploded['properties']['short_description'].encode('utf8').replace(',','|||').replace("\r","").replace("\n","")
         if 'permalink' in exploded['properties'].keys() and not exploded['properties']['permalink'] is None:
             permalink = exploded['properties']['permalink'].encode('utf8')
         if 'primary_role' in exploded['properties'].keys() and not exploded['properties']['primary_role'] is None:
