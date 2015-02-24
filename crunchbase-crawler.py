@@ -202,7 +202,7 @@ if payload != None:
         writer.writerows(tuples)
 
     timestamp = time.time()
-    copyTmp = 'cp crunchbase.csv crunchbase.csv.' + str(timestamp)
+    copyTmp = 'cp crunchbase.csv crunchbase.csv-' + str(timestamp)
     stripHeaderCmd = 'tail -n +2 crunchbase.csv > crunchbase.csv.old'
     mergeCmd = 'cat crunchbase.csv.old crunchbase.csv.new > merged.csv'
     cleanCmd = 'sort -t , --key=1,5 -r merged.csv | sort -t , --key=1,1 --unique | sort -t , -k 5 -r > clean.csv'
