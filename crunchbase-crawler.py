@@ -13,6 +13,7 @@ import traceback
 datetime_format = '%Y-%m-%d %H:%M:%S'
 user_key = '8281900a2863fe0ff65072d83d93e755'
 order = 'ASC'
+starting_page = 9
 
 def format_time_in_millis(millis):
     return datetime.datetime.fromtimestamp(millis).strftime(datetime_format);
@@ -180,14 +181,14 @@ if os.path.isfile(file_name):
 
 print 'Getting crunchbase organizations...'
 
-url = 'https://api.crunchbase.com/v/2/organizations?page=9'
+url = 'https://api.crunchbase.com/v/2/organizations?page=' + str(starting_page)
 tuples = []
 
 payload = get_org_page(url, '&', latest_update)
 if payload != None:
     tuples.extend(filter(None,payload['tuples']))
     count = 0 
-    while (payload != None) and (payload['paging']['next_page_url'] != None) and (count < 8):
+    while (payload != None) and (payload['paging']['next_page_url'] != None) and (count < 3):
         next_url = payload['paging']['next_page_url']
         payload = get_org_page(next_url, '&', latest_update)
         tuples.extend(filter(None,payload['tuples']))
