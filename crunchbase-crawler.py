@@ -13,7 +13,7 @@ import traceback
 datetime_format = '%Y-%m-%d %H:%M:%S'
 user_key = '8281900a2863fe0ff65072d83d93e755'
 order = 'ASC'
-starting_page = 12
+starting_page = 15
 
 def format_time_in_millis(millis):
     return datetime.datetime.fromtimestamp(millis).strftime(datetime_format);
@@ -25,6 +25,7 @@ def get_org_detailed(permalink):
     try: 
        org = json.load(urllib2.urlopen(request))
        data = org['data']
+       # this to assure that we can collect the 2.5k calls a day from the API
        time.sleep(1)
     except urllib2.HTTPError, e:
         print 'HTTPError = ' + str(e.code)
@@ -159,8 +160,6 @@ def get_org_page(url, url_suffix, latest_update):
         for item in orgs['data']['items']:
             if float(item['updated_at']) > float(latest_update):
                 filtered.append(item)
-        #just for testing purposes
-        #filtered = filtered[:100]
         tuples = map(generate_tuple, filtered)
         return { 'tuples' : tuples, 'paging' :  orgs['data']['paging'] }
     else:
