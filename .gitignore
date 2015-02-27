@@ -7,3 +7,5 @@ images/*.png
 images/*.gif
 images/*.tiff
 images/*.bmp
+
+crunchbase.csv
