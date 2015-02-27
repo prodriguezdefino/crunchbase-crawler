@@ -20,5 +20,5 @@ With 25000 calls per month (defined cap for the free key request) => 6250 per we
 
 So, currently there are 330~ pages of organization's information (1000 items per page), for each of the items we need to access the details (using a separate API call). Consuming 6250 API calls per week then it would take 53~ weeks to complete the whole dataset. 
 
-Each item comes with a created date and also an updated date, so after initial load up (once we obtained an up to day image of the data in Crunchbase), we should then keep an eye on updated items since our last run event. 
+Each item comes with a created date and also an updated date, so after initial load up (once we obtained an up to day image of the data in Crunchbase), we should then keep an eye on updated items since our last run event. To achieve that one can change the ```order``` configuration so the script will start with the latest updates in the dataset reducing the amount of API calls to be made to Crunchbase. 
 
