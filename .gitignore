@@ -1,4 +1,5 @@
 
+crunchbase.csv
 crunchbase.csv-*
 crunchbase.csv.*
 
@@ -7,5 +8,3 @@ images/*.png
 images/*.gif
 images/*.tiff
 images/*.bmp
-
-crunchbase.csv
