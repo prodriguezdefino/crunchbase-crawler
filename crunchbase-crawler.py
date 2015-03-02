@@ -13,8 +13,7 @@ import traceback
 datetime_format = '%Y-%m-%d %H:%M:%S'
 user_key = '8281900a2863fe0ff65072d83d93e755'
 order = 'ASC'
-starting_page = 18
-
+starting_page = 19           
 def format_time_in_millis(millis):
     return datetime.datetime.fromtimestamp(millis).strftime(datetime_format);
 
@@ -185,11 +184,11 @@ tuples = []
 
 payload = get_org_page(url, '&', latest_update)
 if payload != None:
+    count = 0 
     tuples.extend(filter(None,payload['tuples']))
     with open(file_name + '.' + str(count), 'w') as itt:
         writer = csv.writer(itt, delimiter=',')
         writer.writerows(tuples)
-    count = 0 
     while (payload != None) and (payload['paging']['next_page_url'] != None) and (count < 3):
         next_url = payload['paging']['next_page_url']
         payload = get_org_page(next_url, '&', latest_update)
