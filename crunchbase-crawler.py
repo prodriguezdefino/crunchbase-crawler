@@ -11,9 +11,10 @@ import time
 import traceback
 
 datetime_format = '%Y-%m-%d %H:%M:%S'
-user_key = '8281900a2863fe0ff65072d83d93e755'
+user_key = 'client-key'
 order = 'ASC'
-starting_page = 19           
+starting_page = 21
+           
 def format_time_in_millis(millis):
     return datetime.datetime.fromtimestamp(millis).strftime(datetime_format);
 
